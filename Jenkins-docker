@@ -48,7 +48,7 @@ pipeline{
         stage('Push Docker Image'){
              steps{
                   withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_PASSWD')]) {
-                      sh "docker login -u manojsunkara1994devops -p ${DOCKER_PASSWD}"
+                      sh "docker login -u manojsunkara1994devops --password-stdin ${DOCKER_PASSWD}"
             }
             sh 'docker push manojsunkara1994devops/spring-boot-mongo'
         }
